@@ -18,19 +18,25 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
-    setRefreshing(true);  
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
   };
 
-  console.log(posts)
-
-
+ 
   return (
     <SafeAreaView className="bg-primary">
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
         renderItem={({item}) => (
-          <VideoCard video={item} />
+          <VideoCard
+              title={item.title}
+              thumbnail={item.thumbnail}
+              video={item.video}
+              creator={item.creator.username}
+              avatar={item.creator.avatar}  
+          />
         )}
         ListHeaderComponent={() => (
           <View className="my-6 px-4 space-y-6">

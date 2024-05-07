@@ -29,7 +29,7 @@ const SearchInput = ({ initialQuery }) => {
               "Please input something to search results across database"
             );
 
-          if (pathname.startsWith("/search")) router.setParams({ query });
+          if (pathname.startsWith("/search")) router.setParams({ query })
           else router.push(`/search/${query}`);
         }}
       >
