@@ -15,11 +15,13 @@ const SignIn = () => {
   const [form, setForm] = useState({ email: '', password: '' })
 
   const submit = async () => {
+    
     if( !form.email ||!form.password ) {
       Alert.alert('Error', 'All fields are required')
     }
 
     setIsSubmitting(true)
+
     try {
       await signIn(form.email, form.password)
       const result = await getCurrentUser()
